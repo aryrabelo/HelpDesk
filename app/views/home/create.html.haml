@@ -1,0 +1,10 @@
+%h1 Nova Mensagem HelpDesk
+%br
+= form_tag('/add')
+%label Título
+=text_field_tag 'dados[titulo]'
+%br
+%label Mensagem
+=text_area_tag 'dados[mensagem]', nil, :rows => 10, :cols => 30
+%br
+%input{:type => "submit", :value => "Registrar", :class => 'btn btn-success dropdown-toggle'}

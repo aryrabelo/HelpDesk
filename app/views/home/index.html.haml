@@ -1,0 +1,15 @@
+%h1{:class => 'site-title'} HelpDesk
+
+%form
+%input{:type=>'text'}
+%input{:type=>'submit', :value=>'OK'}
+
+%hr
+
+= $redis.hgetall('help').to_json	
+
+
+%hr
+
+- if params[:saved]
+	%span{:class=> 'label label-success'} Cadastrado com Sucesso

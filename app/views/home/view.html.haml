@@ -1,0 +1,21 @@
+%h1 Helps
+
+
+%table{:class => 'table table-bordered'}
+	%thead
+		%tr
+			%th Titulo
+			%th Mensagem
+		%tr
+	
+	%tbody
+	- @helps.each do |titulo, mensagem|		
+		%tr
+			%td #{titulo}
+			%td #{mensagem}
+	-		
+
+        
+
+
+    
