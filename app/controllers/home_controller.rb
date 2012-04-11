@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @helps = $redis.hgetall('help').to_a
     render :action => "index"
   end
   
@@ -17,8 +18,10 @@ class HomeController < ApplicationController
       $redis.hset ("help", @titulo, @mensagem)
      
       data = $redis.hget "help", @titulo
-      
+        
       if data
+        
+        $redis.bgsave  
         redirect_to :action => "index", :saved => 1
       end
     
@@ -35,6 +38,16 @@ class HomeController < ApplicationController
     
     
   end
+  
+  
+  def getmsg
+    key = params[:key]
+    
+    msg = $redis.hget 'help', key
+    
+    render :text => msg
+  
+  end 
   
   
   

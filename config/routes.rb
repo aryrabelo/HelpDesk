@@ -7,7 +7,9 @@ Helpdesk::Application.routes.draw do
   match 'create' => 'home#create'
   match 'add' => 'home#add'
   match 'view' => 'home#view'
+  match 'getmsg' => 'home#getmsg'
   
+
   
   
   # The priority is based upon order of creation:

@@ -14,3 +14,13 @@
 
 
 
+			- helps = Array.new
+			- tags = $redis.hgetall('help')
+			- tags.each do |titulo, mensagem|
+				- helps << titulo	
+			-
+
+
+			= javascript_tag "var tags = ['#{helps.join('\',\'')}']"
+	
+			

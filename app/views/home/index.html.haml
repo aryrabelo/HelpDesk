@@ -1,15 +1,34 @@
 %h1{:class => 'site-title'} HelpDesk
 
-%form
-%input{:type=>'text'}
-%input{:type=>'submit', :value=>'OK'}
-
+%form{:id => 'form-home', :action => '/'}
+	%input{:type=>'text', :id=>'auto'}
+	%input{:type=>'submit', :value=>'OK', :class=>'btn btn-success'}
 %hr
 
-= $redis.hgetall('help').to_json	
 
 
-%hr
+
+
+
+%div
+	%div
 
 - if params[:saved]
 	%span{:class=> 'label label-success'} Cadastrado com Sucesso
+-
+
+
+%table{:class => 'table table-bordered'}
+	%thead
+		%tr
+			%th Titulo
+		%tr
+	
+	%tbody
+	- @helps.each do |titulo, mensagem|		
+		%tr
+			%td #{titulo}
+	-
+
+
+
