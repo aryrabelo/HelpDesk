@@ -1,14 +1,8 @@
 %h1{:class => 'site-title'} HelpDesk
 
 %form{:id => 'form-home', :action => '/'}
-	%input{:type=>'text', :id=>'auto'}
-	%input{:type=>'submit', :value=>'OK', :class=>'btn btn-success'}
+	%input{:type=>'text', :id=>'auto'}	
 %hr
-
-
-
-
-
 
 %div
 	%div
@@ -17,18 +11,55 @@
 	%span{:class=> 'label label-success'} Cadastrado com Sucesso
 -
 
+%div{:class => 'lista'}
 
-%table{:class => 'table table-bordered'}
-	%thead
-		%tr
-			%th Titulo
-		%tr
+
+	%div{:class => 'btn btn-primary', :id => 'btn-novo'} Criar Novo
 	
-	%tbody
-	- @helps.each do |titulo, mensagem|		
-		%tr
-			%td #{titulo}
-	-
+	%br
+	%br
+	
+	%table{:class => 'table table-bordered'}
+		%thead
+			%tr
+				%th Titulo
+				%th -
+				%th -
+	
+		%tbody
+		- @helps.each do |titulo, mensagem|		
+			%tr{:linha => titulo}
+				%td{:class => 'itemlista' } #{titulo}
+				%td
+					%div{:class=>'btn editar', :rel=> titulo} Editar
+				%td
+					%div{:class=>'btn btn-danger excluir', :rel=> titulo} Excluir
+		-
+
+
+%div{:id => 'confirm-delete', :class => 'modal', :style=>'display:none;'}
+	%div{:class => 'modal-header'}
+		%a{:class=>'close', :dataDismiss => 'modal'} x
+		%h3 Atenção
+	
+	%div{:class => 'modal-body'}
+		%p Deseja Realmente Excluir 
+		
+	
+	%div{:class=>'modal-footer'}
+		%a{:href=>'#', :class=>'btn fechar-delete'} Fechar
+		%a{:href=>'#', :class=>'btn btn-danger delete-master'} Delete
+
+
+
+
+
+
+
+
+
+
+
 
 
 

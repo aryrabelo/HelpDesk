@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     @post = params[:dados]
     
     if @post
-      @titulo = params[:dados]["titulo"] 
+      @titulo = params[:dados]["real"] 
       @mensagem = params[:dados]["mensagem"]
       
       $redis.hset ("help", @titulo, @mensagem)
@@ -30,12 +30,10 @@ class HomeController < ApplicationController
   
   
   def view
+    
     @helps = $redis.hgetall('help')
-    
-    
-    
+  
     render :action => 'view'
-    
     
   end
   
@@ -50,10 +48,22 @@ class HomeController < ApplicationController
   end 
   
   
-  
-  
-  
-  
+  def del
+    key = params[:key]
+    
+    $redis.hdel 'help' , key
+    
+    validation =  $redis.hexists 'help', key
+    
+    if validation == false
+      render :text => 'ok'
+    else
+      render :text => validation
+    end
+    
+  end
+    
+    
   
   
   

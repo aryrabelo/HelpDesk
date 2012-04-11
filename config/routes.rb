@@ -8,7 +8,7 @@ Helpdesk::Application.routes.draw do
   match 'add' => 'home#add'
   match 'view' => 'home#view'
   match 'getmsg' => 'home#getmsg'
-  
+  match 'del' => 'home#del'
 
   
   

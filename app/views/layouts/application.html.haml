@@ -7,9 +7,17 @@
 		= javascript_include_tag "application"
 		= csrf_meta_tags
 
-
 	%body
-		%div{:class=>'container'}
+		%div{:class=>'navbar navbar-fixed-top'}
+			%div{:class=>'navbar-inner'}
+				%div{:class => 'container'}
+					%ul{:class=>'nav'}
+						%li
+							%a{:href => '/'} Home
+			
+
+	
+		%div{:class=>'container', :id => 'container'}
 			=yield
 
 
